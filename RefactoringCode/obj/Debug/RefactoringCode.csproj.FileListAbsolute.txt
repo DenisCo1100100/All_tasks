@@ -1,0 +1,6 @@
+D:\SeriousProjects\RefactoringCode\bin\Debug\RefactoringCode.exe.config
+D:\SeriousProjects\RefactoringCode\bin\Debug\RefactoringCode.exe
+D:\SeriousProjects\RefactoringCode\bin\Debug\RefactoringCode.pdb
+D:\SeriousProjects\RefactoringCode\obj\Debug\RefactoringCode.csprojAssemblyReference.cache
+D:\SeriousProjects\RefactoringCode\obj\Debug\RefactoringCode.exe
+D:\SeriousProjects\RefactoringCode\obj\Debug\RefactoringCode.pdb
