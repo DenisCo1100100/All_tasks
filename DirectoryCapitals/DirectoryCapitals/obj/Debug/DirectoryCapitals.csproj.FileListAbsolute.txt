@@ -1,0 +1,19 @@
+C:\Users\Дима\source\repos\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.exe.config
+C:\Users\Дима\source\repos\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.exe
+C:\Users\Дима\source\repos\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.pdb
+C:\Users\Дима\source\repos\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.csprojAssemblyReference.cache
+C:\Users\Дима\source\repos\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.csproj.CoreCompileInputs.cache
+C:\Users\Дима\source\repos\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.exe
+C:\Users\Дима\source\repos\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.pdb
+C:\Users\admin\Desktop\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.exe.config
+C:\Users\admin\Desktop\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.exe
+C:\Users\admin\Desktop\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.pdb
+C:\Users\admin\Desktop\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.csprojAssemblyReference.cache
+C:\Users\admin\Desktop\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.exe
+C:\Users\admin\Desktop\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.pdb
+D:\Serious Projects\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.exe.config
+D:\Serious Projects\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.exe
+D:\Serious Projects\DirectoryCapitals\DirectoryCapitals\bin\Debug\DirectoryCapitals.pdb
+D:\Serious Projects\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.csprojAssemblyReference.cache
+D:\Serious Projects\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.exe
+D:\Serious Projects\DirectoryCapitals\DirectoryCapitals\obj\Debug\DirectoryCapitals.pdb
