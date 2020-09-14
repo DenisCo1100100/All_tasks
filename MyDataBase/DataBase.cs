@@ -7,7 +7,7 @@ namespace MyDataBase
     enum WordsRequest
     {
         Request,
-        Date, 
+        Date,
         Event
     }
 
@@ -18,32 +18,36 @@ namespace MyDataBase
 
         static void Main()
         {
-            ReadUserRequest();
-
-            Console.WriteLine("Press key to close");
-            Console.ReadKey();
+            try
+            {
+                ReadUserRequest();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
         }
 
         private static void ReadUserRequest()
         {
             Console.Write("==>");
-            UserRequest = Console.ReadLine().ToLower();
+            UserRequest = Console.ReadLine();
             splitRequest = UserRequest.Split();
 
-            while (splitRequest[(int)WordsRequest.Request] != "end")
+            while (splitRequest[(int)WordsRequest.Request] != "End")
             {
-                DataBase.ControllerRequest();
+                MyDataBase.ControllerRequest();
 
                 Console.Write("==>");
-                UserRequest = Console.ReadLine().ToLower();
+                UserRequest = Console.ReadLine();
                 splitRequest = UserRequest.Split();
             }
         }
     }
 
-    class DataBase
+    class MyDataBase
     {
-        private static Dictionary<string, List<string>> dataBase = new Dictionary<string, List<string>>();
+        private static Dictionary<string, List<string>> DataBase = new Dictionary<string, List<string>>();
 
         public static void ControllerRequest()
         {
@@ -51,16 +55,16 @@ namespace MyDataBase
 
             switch (command)
             {
-                case "add":
+                case "Add":
                     Add();
                     break;
-                case "del":
+                case "Del":
                     DeletEventOrDate();
                     break;
-                case "find":
+                case "Find":
                     Find();
                     break;
-                case "print":
+                case "Print":
                     Print();
                     break;
                 default:
@@ -72,66 +76,84 @@ namespace MyDataBase
         private static void ProcessingUnknownCommand(string command)
         {
             if (command != "")
-            {
-                Console.WriteLine($"Unknown command: {command}");
-            }
+                throw new Exception($"Unknown command: {command}");
         }
-
 
         private static void Add()
         {
-            DateFormatCheck();
-
-            string key = InputData.splitRequest[(int)WordsRequest.Date];
-            string stringEvent = null;
-
-            for (int i = (int)WordsRequest.Event; i < InputData.splitRequest.Length; i++)
+            if (InputData.splitRequest.Length == (int)WordsRequest.Date)
             {
-                stringEvent += InputData.splitRequest[i];
+                throw new Exception("Wrong date format");
+            }
+            else if(InputData.splitRequest.Length == (int)WordsRequest.Event)
+            {
+                DateFormatCheck();
+                return;
             }
 
-            if (dataBase.ContainsKey(key))
+            DateFormatCheck();
+
+            string key = AddZeroInDate(InputData.splitRequest[(int)WordsRequest.Date]);
+            string stringEvent = InputData.splitRequest[(int)WordsRequest.Event];
+
+            if (stringEvent == null)
+                return;
+
+            if (DataBase.ContainsKey(key))
             {
-                dataBase[key].Add(stringEvent);
+                if (!FindEvent(key, stringEvent))
+                    DataBase[key].Add(stringEvent);
             }
             else
             {
-                dataBase.Add(key, new List<string> { stringEvent });
+                DataBase.Add(key, new List<string> { stringEvent });
             }
+        }
+
+        private static bool FindEvent(string key, string searchedEvent)
+        {
+            foreach (var item in DataBase[key])
+            {
+                if (item == searchedEvent)
+                    return true;
+            }
+
+            return false;
         }
 
         private static void DeletEventOrDate()
         {
+            if (InputData.splitRequest.Length == (int)WordsRequest.Date)
+            {
+                throw new Exception("Wrong date format");
+            }
+
             DateFormatCheck();
 
-            if (InputData.splitRequest.Length == 3)
-            {
+            if (InputData.splitRequest.Length >= 3)
                 DeleteEvent();
-            }
             else
-            {
                 DeleteDate();
-            }
         }
 
         private static void DeleteEvent()
         {
-            string date = InputData.splitRequest[(int)WordsRequest.Date];
+            string date = AddZeroInDate(InputData.splitRequest[(int)WordsRequest.Date]);
 
-            if (dataBase.ContainsKey(date))
+            if (DataBase.ContainsKey(date))
             {
-                foreach (var searchEvent in dataBase[date])
+                foreach (var searchEvent in DataBase[date])
                 {
                     if (searchEvent == InputData.splitRequest[(int)WordsRequest.Event])
                     {
-                        dataBase[date].Remove(searchEvent);
+                        DataBase[date].Remove(searchEvent);
                         Console.WriteLine("Delete successfully");
 
-                        if (dataBase[date].Count == 0)
+                        if (DataBase[date].Count == 0)
                         {
-                            dataBase.Remove(date);
+                            DataBase.Remove(date);
                         }
-                        
+
                         return;
                     }
                 }
@@ -142,12 +164,12 @@ namespace MyDataBase
 
         private static void DeleteDate()
         {
-            string date = InputData.splitRequest[(int)WordsRequest.Date];
+            string date = AddZeroInDate(InputData.splitRequest[(int)WordsRequest.Date]);
 
-            if (dataBase.ContainsKey(date))
+            if (DataBase.ContainsKey(date))
             {
-                Console.WriteLine("Delete " + dataBase[date].Count + " events");
-                dataBase.Remove(date);
+                Console.WriteLine("Delete " + DataBase[date].Count + " events");
+                DataBase.Remove(date);
             }
             else
             {
@@ -157,11 +179,19 @@ namespace MyDataBase
 
         private static void Find()
         {
+            if (InputData.splitRequest.Length == (int)WordsRequest.Date)
+            {
+                throw new Exception("Wrong date format");
+            }
+
             DateFormatCheck();
 
-            foreach (var date in dataBase)
+            foreach (var date in DataBase)
             {
-                if (date.Key == InputData.splitRequest[(int)WordsRequest.Date])
+                string keyInDict = AddZeroInDate(date.Key);
+                string keyInRequest = AddZeroInDate(InputData.splitRequest[(int)WordsRequest.Date]);
+
+                if (keyInDict == keyInRequest)
                 {
                     date.Value.Sort();
 
@@ -173,44 +203,32 @@ namespace MyDataBase
                     return;
                 }
             }
-
-            Console.WriteLine("Event not found");
         }
-        
+
         private static void Print()
         {
-            var sortDict = new SortedDictionary<string, List<string>>(dataBase);
+            var sortDict = new SortedDictionary<string, List<string>>(DataBase);
 
             foreach (var date in sortDict)
             {
-                int cnt = 0;
-                MatchEvaluator ev = new MatchEvaluator(m => m.Groups[0].ToString().PadLeft(cnt++ > 0 ? 2 : 4, '0'));
-                string outputDate = Regex.Replace(date.Key, @"\d{1,4}", ev);
-                Console.Write(outputDate + " ");
-
+                string outputDate = AddZeroInDate(date.Key);
 
                 date.Value.Sort();
-                foreach (var item in date.Value) 
-                { 
-                    Console.Write(item + " ");
-                }
-
-                Console.WriteLine();
+                foreach (var item in date.Value)
+                    Console.WriteLine(outputDate + " " + item);
             }
         }
 
         private static void DateFormatCheck()
         {
             string date = InputData.splitRequest[(int)WordsRequest.Date];
-            Regex regex = new Regex(@"^[-\+]?(\d{1,10})[-]([-\+]?(0?[1-9]|[-\+]?1[0-2]))[-]([-\+]?([0-2]?[1-9]|[+\-]?[1-3][0-1]))$");
+            Regex regex = new Regex(@"^[-\+]?(\d{1,10})[-]([-\+]?[0-9]?[0-9]?)[-]([+\-]?[0-9]?[0-9]?)$");
 
             if (!regex.IsMatch(date))
-            {
                 throw new Exception($"Wrong date format: {date}");
-            }
 
             int month = Convert.ToInt32(regex.Match(date).Groups[2].ToString());
-            int day = Convert.ToInt32(regex.Match(date).Groups[4].ToString());
+            int day = Convert.ToInt32(regex.Match(date).Groups[3].ToString());
 
             FindErrorDate(month, day);
             DeletPlusInDate(ref InputData.splitRequest[(int)WordsRequest.Date]);
@@ -219,13 +237,10 @@ namespace MyDataBase
         private static void FindErrorDate(int month, int day)
         {
             if (month > 12 || month < 1)
-            {
                 throw new Exception($"Month value is invalid: {month}");
-            }
+
             else if (day > 31 || day < 1)
-            {
                 throw new Exception($"Day value is invalid: {day}");
-            }
         }
 
         private static void DeletPlusInDate(ref string date)
@@ -235,12 +250,19 @@ namespace MyDataBase
             for (int i = 0; i < date.Length; i++)
             {
                 if (date[i] != '+')
-                {
                     outputDate += date[i];
-                }
             }
 
             date = outputDate;
+        }
+
+        private static string AddZeroInDate(string date)
+        {
+            int cnt = 0;
+            MatchEvaluator ev = new MatchEvaluator(m => m.Groups[0].ToString().PadLeft(cnt++ > 0 ? 2 : 4, '0'));
+            string outputDate = Regex.Replace(date, @"\d{1,4}", ev);
+
+            return outputDate;
         }
     }
 }
