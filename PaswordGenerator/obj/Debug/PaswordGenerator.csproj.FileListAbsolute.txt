@@ -1,0 +1,6 @@
+D:\Serious Projects\PaswordGenerator\bin\Debug\PaswordGenerator.exe.config
+D:\Serious Projects\PaswordGenerator\bin\Debug\PaswordGenerator.exe
+D:\Serious Projects\PaswordGenerator\bin\Debug\PaswordGenerator.pdb
+D:\Serious Projects\PaswordGenerator\obj\Debug\PaswordGenerator.csprojAssemblyReference.cache
+D:\Serious Projects\PaswordGenerator\obj\Debug\PaswordGenerator.exe
+D:\Serious Projects\PaswordGenerator\obj\Debug\PaswordGenerator.pdb
