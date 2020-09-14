@@ -43,7 +43,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Program.cs" />
+    <Compile Include="CommandManager.cs" />
+    <Compile Include="Commands\AddEventCommand.cs" />
+    <Compile Include="Commands\DeleteEventCommand.cs" />
+    <Compile Include="Commands\FindEventCommand.cs" />
+    <Compile Include="Commands\ICommand.cs" />
+    <Compile Include="Commands\InfoCommand.cs" />
+    <Compile Include="DataBase.cs" />
+    <Compile Include="DateTimeParser.cs" />
+    <Compile Include="Event.cs" />
+    <Compile Include="EventDao.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
