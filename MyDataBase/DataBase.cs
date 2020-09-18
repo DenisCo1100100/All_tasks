@@ -15,7 +15,7 @@ namespace MyDataBase
     {
         public static string UserRequest { get; set; }
         public static string[] splitRequest;
-
+        
         static void Main()
         {
             try
@@ -38,6 +38,7 @@ namespace MyDataBase
             {
                 MyDataBase.ControllerRequest();
 
+                
                 Console.Write("==>");
                 UserRequest = Console.ReadLine();
                 splitRequest = UserRequest.Split();
@@ -48,6 +49,7 @@ namespace MyDataBase
     class MyDataBase
     {
         private static Dictionary<string, List<string>> DataBase = new Dictionary<string, List<string>>();
+        private static string Year { get; set; }
 
         public static void ControllerRequest()
         {
@@ -211,7 +213,7 @@ namespace MyDataBase
 
             foreach (var date in sortDict)
             {
-                string outputDate = AddZeroInDate(date.Key);
+                string outputDate = date.Key;
 
                 date.Value.Sort();
                 foreach (var item in date.Value)
@@ -222,13 +224,14 @@ namespace MyDataBase
         private static void DateFormatCheck()
         {
             string date = InputData.splitRequest[(int)WordsRequest.Date];
-            Regex regex = new Regex(@"^[-\+]?(\d{1,10})[-]([-\+]?[0-9]?[0-9]?)[-]([+\-]?[0-9]?[0-9]?)$");
+            Regex regex = new Regex(@"^([-\+]?(\d{1,10}))[-]([-\+]?0*[0-9][0-9]?)[-]([+\-]?0*[0-9][0-9]?)$");
 
             if (!regex.IsMatch(date))
                 throw new Exception($"Wrong date format: {date}");
 
-            int month = Convert.ToInt32(regex.Match(date).Groups[2].ToString());
-            int day = Convert.ToInt32(regex.Match(date).Groups[3].ToString());
+            Year = regex.Match(date).Groups[1].ToString();
+            int month = Convert.ToInt32(regex.Match(date).Groups[3].ToString());
+            int day = Convert.ToInt32(regex.Match(date).Groups[4].ToString());
 
             FindErrorDate(month, day);
             DeletPlusInDate(ref InputData.splitRequest[(int)WordsRequest.Date]);
@@ -258,11 +261,34 @@ namespace MyDataBase
 
         private static string AddZeroInDate(string date)
         {
-            int cnt = 0;
-            MatchEvaluator ev = new MatchEvaluator(m => m.Groups[0].ToString().PadLeft(cnt++ > 0 ? 2 : 4, '0'));
-            string outputDate = Regex.Replace(date, @"\d{1,4}", ev);
+            string outputDate = "";
+            char[] symb = new char[] {'-'};
+            string[] splitDate = date.Split(symb , 3, StringSplitOptions.RemoveEmptyEntries);
+
+            if (Year[0] == '-' && IsDeletMinus())
+            {
+                outputDate = "-";
+            }
+
+            outputDate += String.Format("{0:d4}", Convert.ToInt32(splitDate[0]));
+            outputDate += "-" + String.Format("{0:d2}", Convert.ToInt32(splitDate[1]));
+            outputDate += "-" + String.Format("{0:d2}", Convert.ToInt32(splitDate[2]));
 
             return outputDate;
+        }
+
+        private static bool IsDeletMinus()
+        {
+            int sumNumberYear = 0;
+            for (int i = 1; i < Year.Length; i++)
+                sumNumberYear += Convert.ToInt32(Year[i].ToString());
+
+            if (sumNumberYear == 0)
+            {
+                return false;
+            }
+
+            return true;
         }
     }
 }

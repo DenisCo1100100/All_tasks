@@ -4,3 +4,9 @@ D:\Serious Projects\MyDataBase\bin\Debug\MyDataBase.pdb
 D:\Serious Projects\MyDataBase\obj\Debug\MyDataBase.csprojAssemblyReference.cache
 D:\Serious Projects\MyDataBase\obj\Debug\MyDataBase.exe
 D:\Serious Projects\MyDataBase\obj\Debug\MyDataBase.pdb
+D:\Serious Projects\All-tasks\MyDataBase\bin\Debug\MyDataBase.exe.config
+D:\Serious Projects\All-tasks\MyDataBase\bin\Debug\MyDataBase.exe
+D:\Serious Projects\All-tasks\MyDataBase\bin\Debug\MyDataBase.pdb
+D:\Serious Projects\All-tasks\MyDataBase\obj\Debug\MyDataBase.csprojAssemblyReference.cache
+D:\Serious Projects\All-tasks\MyDataBase\obj\Debug\MyDataBase.exe
+D:\Serious Projects\All-tasks\MyDataBase\obj\Debug\MyDataBase.pdb
