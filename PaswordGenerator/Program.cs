@@ -14,11 +14,8 @@ namespace PaswordGenerator
 
         static void Main()
         {
-            Console.Write("Password generation with repeats(Y/N):");
-            answerUser = Console.ReadLine();
-
-            generateSembolFunction = new MyDelegate[] { 
-                GeneratingLowerСharacters, 
+            generateSembolFunction = new MyDelegate[] {
+                GeneratingLowerСharacters,
                 GeneratingUpperCharacters,
                 GenerationSpecialСharacters,
                 GenerationNumberСharacters
@@ -26,7 +23,16 @@ namespace PaswordGenerator
 
             try
             {
-                GeneratRandomSymbols(RepitSymbol(answerUser));
+                Console.Write("Password generation with repeats? (Y/N):");
+                answerUser = Console.ReadLine();
+                bool isRepiting = IsRepitSymbol(answerUser);
+
+                Console.Write("Use a sign in the password? (Y/N):");
+                answerUser = Console.ReadLine();
+                bool isSing = IsSingPassword(answerUser);
+
+                GeneratRandomSymbols(isRepiting, isSing);
+
                 generatedPassword = AddHyphen();
                 Console.WriteLine("Generated password: " + generatedPassword);
             }
@@ -39,22 +45,37 @@ namespace PaswordGenerator
             Console.ReadKey();
         }
 
-        private static void GeneratRandomSymbols(bool repitingSybol)
+        private static void GeneratRandomSymbols(bool repitingSybol, bool singPassword)
         {
             Random random = new Random();
-            int typeSymbol;
+            int typeSymbol = -1;
 
             while (generatedPassword.Length != PASSWORD_LENGTH)
             {
-                typeSymbol = random.Next(0, 4);
+                if (singPassword)
+                {
+                    typeSymbol++;
+                }
+                else
+                {
+                    typeSymbol = random.Next(0, 4);
+                }
                 
                 if (repitingSybol)
                 {
                     generatedPassword += generateSembolFunction[typeSymbol]();
+                    if (typeSymbol  == 3)
+                    {
+                        typeSymbol = -1;
+                    }
                 }
                 else
                 {
                     CheckRepitSymbols(typeSymbol);
+                    if (typeSymbol == 3)
+                    {
+                        typeSymbol = -1;
+                    }
                 }
             }
         }
@@ -74,7 +95,12 @@ namespace PaswordGenerator
             generatedPassword += receivedChar;
         }
 
-        private static bool RepitSymbol(string answerUser)
+        private static bool IsSingPassword(string answerUser)
+        {
+            return answerUser == "Y" ? true : answerUser == "N" ? false : throw new Exception("Wrong command");
+        }
+
+        private static bool IsRepitSymbol(string answerUser)
         {
             return answerUser == "Y" ? true : answerUser == "N" ? false : throw new Exception("Wrong command");
         }
