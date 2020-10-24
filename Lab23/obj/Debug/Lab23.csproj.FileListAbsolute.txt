@@ -1,0 +1,12 @@
+C:\Users\admin\source\repos\Lab23\bin\Debug\Lab23.exe.config
+C:\Users\admin\source\repos\Lab23\bin\Debug\Lab23.exe
+C:\Users\admin\source\repos\Lab23\bin\Debug\Lab23.pdb
+C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.Form1.resources
+C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.Properties.Resources.resources
+C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.csproj.GenerateResource.cache
+C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.exe
+C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.pdb
+C:\Users\admin\source\repos\Lab23\bin\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\admin\source\repos\Lab23\bin\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.csproj.CopyComplete
