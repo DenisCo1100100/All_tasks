@@ -139,6 +139,7 @@
             this.Controls.Add(this.toolStrip1);
             this.Name = "Form1";
             this.Text = "Lab23";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.Click += new System.EventHandler(this.Form1_Click);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();

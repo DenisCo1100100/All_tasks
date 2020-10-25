@@ -1,0 +1,8 @@
+C:\Users\admin\source\repos\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\admin\source\repos\WindowsFormsControlLibrary1\bin\Debug\WindowsFormsControlLibrary1.pdb
+C:\Users\admin\source\repos\WindowsFormsControlLibrary1\obj\Debug\Node.csprojAssemblyReference.cache
+C:\Users\admin\source\repos\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.Properties.Resources.resources
+C:\Users\admin\source\repos\WindowsFormsControlLibrary1\obj\Debug\Node.Vertex.resources
+C:\Users\admin\source\repos\WindowsFormsControlLibrary1\obj\Debug\Node.csproj.GenerateResource.cache
+C:\Users\admin\source\repos\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.dll
+C:\Users\admin\source\repos\WindowsFormsControlLibrary1\obj\Debug\WindowsFormsControlLibrary1.pdb

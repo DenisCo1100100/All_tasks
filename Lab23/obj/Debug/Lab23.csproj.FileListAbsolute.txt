@@ -10,3 +10,13 @@ C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.pdb
 C:\Users\admin\source\repos\Lab23\bin\Debug\WindowsFormsControlLibrary1.dll
 C:\Users\admin\source\repos\Lab23\bin\Debug\WindowsFormsControlLibrary1.pdb
 C:\Users\admin\source\repos\Lab23\obj\Debug\Lab23.csproj.CopyComplete
+D:\Serious Projects\All-tasks\Lab23\bin\Debug\Lab23.exe.config
+D:\Serious Projects\All-tasks\Lab23\bin\Debug\Lab23.exe
+D:\Serious Projects\All-tasks\Lab23\bin\Debug\Lab23.pdb
+D:\Serious Projects\All-tasks\Lab23\obj\Debug\Lab23.csprojAssemblyReference.cache
+D:\Serious Projects\All-tasks\Lab23\obj\Debug\Lab23.Form1.resources
+D:\Serious Projects\All-tasks\Lab23\obj\Debug\Lab23.Properties.Resources.resources
+D:\Serious Projects\All-tasks\Lab23\obj\Debug\Node.Vertex.resources
+D:\Serious Projects\All-tasks\Lab23\obj\Debug\Lab23.csproj.GenerateResource.cache
+D:\Serious Projects\All-tasks\Lab23\obj\Debug\Lab23.exe
+D:\Serious Projects\All-tasks\Lab23\obj\Debug\Lab23.pdb
